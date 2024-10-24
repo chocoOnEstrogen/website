@@ -76,7 +76,7 @@ export const config: IConfig = {
 		},
 		{
 			name: 'Donate',
-			URL: 'https://donate.stripe.com/4gwdT31PC7bz03m9AD'
+			url: 'https://donate.stripe.com/4gwdT31PC7bz03m9AD'
 		}
 	],
 }
