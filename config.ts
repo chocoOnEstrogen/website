@@ -74,5 +74,9 @@ export const config: IConfig = {
 			name: 'VTubersTV',
 			url: 'https://vtubers.tv',
 		},
+		{
+			name: 'Donate',
+			URL: 'https://donate.stripe.com/4gwdT31PC7bz03m9AD'
+		}
 	],
 }
