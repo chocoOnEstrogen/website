@@ -13,7 +13,7 @@ export const config: IConfig = {
 		url: 'https://vtubers.tv',
 	},
 	location: 'Tokyo, Japan',
-	email: 'stellaonestrogen@gmail.com',
+	email: 'choco@choco.rip',
 	pronouns: 'she/her/hers/herself',
 	name: 'Stella',
 	socials: [
@@ -38,7 +38,7 @@ export const config: IConfig = {
 		I'm a Fullstack Developer and a Software Engineer. I love to code, break things, and build things. I am the Owner and Lead Developer of VTubersTV.	
 	`,
 	contact: {
-		email: 'stellaonestrogen@gmail.com',
+		email: 'choco@choco.rip',
 		discordServer: 'https://discord.gg/tf73bchpqT',
 	},
 	// To get the timezone, you can use the following command: node -p 'Intl.DateTimeFormat().resolvedOptions().timeZone' \\
