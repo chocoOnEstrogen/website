@@ -14,12 +14,6 @@ export interface IConfig {
 		name: string
 		url: string
 	}
-	components: {
-		images: {
-			enabled: boolean
-			url: string
-		}
-	}
 	contact: {
 		email?: string
 		discordServer?: string

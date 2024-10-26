@@ -15,8 +15,8 @@
 ### 🌐 Connect with Me
 - 🔵☁️ **BlueSky** [@stella.vtubers.tv](/links/bluesky)
 - 🥏 **Discord:** [VTubersTV Discord](/links/discord)
-- ⌨ **GitHub:** [stellaOnEstrogen](/links/github)
-- 📧 **Email:** [Click here!](mailto:stellaonestrogen@gmail.com)
+- ⌨ **GitHub:** [chocoOnEstrogen](/links/github)
+- 📧 **Email:** [Click here!](mailto:chocoOnEstrogen@gmail.com)
 
 
 ### 🛠️ Skills

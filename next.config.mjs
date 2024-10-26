@@ -4,7 +4,7 @@ const nextConfig = {
 		remotePatterns: [
 			{
 				protocol: 'https',
-				hostname: 'i.0x7ffed9b08230.dev',
+				hostname: 'i.choco.rip',
 				port: '',
 				pathname: '/**',
 			},

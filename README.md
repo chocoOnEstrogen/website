@@ -1,6 +1,6 @@
 <h1 align="center">Website</h1>
 
-This is my personal website. It is built using [NextJS](https://nextjs.org?ref=github/stellaOnEstrogen), a Web framework. The website is hosted on [Vercel](https://vercel.com/).
+This is my personal website. It is built using [NextJS](https://nextjs.org?ref=github/chocoOnEstrogen), a Web framework. The website is hosted on [Vercel](https://vercel.com/).
 
 ## Features
 
@@ -38,7 +38,7 @@ The website will be available at `http://localhost:3000/`.
 
 ## Uploading Images
 
-To upload images like in the image below, you can use the [image-uploader](https://github.com/stellaOnEstrogen/image-uploader) component I created. It is a simple image uploader that uploads images to a server with an accessible URL.
+To upload images like in the image below, you can use the [image-uploader](https://github.com/chocoOnEstrogen/image-uploader) component I created. It is a simple image uploader that uploads images to a server with an accessible URL.
 
 
 ## License

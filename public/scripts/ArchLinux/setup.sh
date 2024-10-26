@@ -7,14 +7,14 @@
 # External Scripts:
 #   - pkgs.py
 #
-# Author: Stella <stellaonestrogen@gmail.com>
+# Author: Stella <chocoOnEstrogen@gmail.com>
 # Version: 1.2
 # Last Updated: 2023-04-14 15:30 JST (GMT+9, Tokyo)
-# Notes: https://www.0x7ffed9b08230.dev/notes/ArchInstall
+# Notes: https://www.choco.rip/notes/ArchInstall
 
 set -euo pipefail
 
-SITE_URLS=("https://www.0x7ffed9b08230.dev/scripts/ArchLinux/pkgs.py")
+SITE_URLS=("https://www.choco.rip/scripts/ArchLinux/pkgs.py")
 LOG_FILE="$HOME/archinstall.log"
 ACTIONS=()
 

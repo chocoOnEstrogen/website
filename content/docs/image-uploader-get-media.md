@@ -4,7 +4,7 @@ title: Image Uploader - Get Media
 
 ## Endpoint
 
-`GET https://i.0x7ffed9b08230.dev/api/get-media`
+`GET https://i.choco.rip/api/get-media`
 
 ## Description
 

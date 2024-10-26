@@ -8,10 +8,10 @@ This script fetches packages from a remote site and installs them.
 External Scripts:
   - setup.sh
 
-Author: Stella <stellaonestrogen@gmail.com>
+Author: Stella <chocoOnEstrogen@gmail.com>
 Version: 1.1
 Last Updated: 2/11/2024 3:45 AM JST (GMT+9, Tokyo)
-Notes: https://www.0x7ffed9b08230.dev/notes/ArchInstall
+Notes: https://www.choco.rip/notes/ArchInstall
 """
 
 import sys
@@ -20,7 +20,7 @@ import json
 import argparse
 from typing import Dict, List
 
-PKGS_URL = "https://www.0x7ffed9b08230.dev/api/content?path=misc/ArchLinux/pkgs.json"
+PKGS_URL = "https://www.choco.rip/api/content?path=misc/ArchLinux/pkgs.json"
 
 parser = argparse.ArgumentParser(description="Install packages from a remote site.")
 parser.add_argument("--list", action="store_true", help="List all available packages")

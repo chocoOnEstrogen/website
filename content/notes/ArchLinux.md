@@ -9,7 +9,7 @@ summary: 'A comprehensive guide to Arch Linux installation scripts, including pa
 ## Installation
 
 ```bash
-curl -L https://www.0x7ffed9b08230.dev/scripts/ArchLinux/setup.sh --output setup.sh
+curl -L https://www.choco.rip/scripts/ArchLinux/setup.sh --output setup.sh
 chmod a+x setup.sh
 sudo ./setup.sh
 ```

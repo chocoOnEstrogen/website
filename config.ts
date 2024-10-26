@@ -7,13 +7,13 @@ import {
 } from '@icons-pack/react-simple-icons'
 
 export const config: IConfig = {
-	githubUserName: 'stellaOnEstrogen',
+	githubUserName: 'chocoOnEstrogen',
 	company: {
 		name: 'VtubersTV',
 		url: 'https://vtubers.tv',
 	},
 	location: 'Tokyo, Japan',
-	email: 'stella.dev@proton.me',
+	email: 'stellaonestrogen@gmail.com',
 	pronouns: 'she/her/hers/herself',
 	name: 'Stella',
 	socials: [
@@ -24,7 +24,7 @@ export const config: IConfig = {
 		},
 		{
 			name: 'GitHub',
-			url: 'https://github.com/stellaOnEstrogen',
+			url: 'https://github.com/chocoOnEstrogen',
 			icon: SiGithub,
 		},
 		{
@@ -37,19 +37,13 @@ export const config: IConfig = {
 	about: `
 		I'm a Fullstack Developer and a Software Engineer. I love to code, break things, and build things. I am the Owner and Lead Developer of VTubersTV.	
 	`,
-	components: {
-		images: {
-			enabled: false,
-			url: 'https://i.0x7ffed9b08230.dev',
-		},
-	},
 	contact: {
-		email: 'stella.dev@proton.me',
+		email: 'stellaonestrogen@gmail.com',
 		discordServer: 'https://discord.gg/tf73bchpqT',
 	},
 	// To get the timezone, you can use the following command: node -p 'Intl.DateTimeFormat().resolvedOptions().timeZone' \\
 	timezone: 'Asia/Tokyo',
-	url: 'https://www.0x7ffed9b08230.dev/',
+	url: 'https://www.choco.rip/',
 	frontLinks: [
 		{
 			name: 'Blog',
