@@ -19,7 +19,7 @@ export const config: IConfig = {
 	socials: [
 		{
 			name: 'BlueSky',
-			url: 'https://bsky.app/profile/stella.vtubers.tv',
+			url: 'https://bsky.app/profile/choco.rip',
 			icon: SiBluesky,
 		},
 		{
