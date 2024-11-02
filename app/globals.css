@@ -91,4 +91,41 @@ body {
   }
 }
 
+.typing-text::after {
+  content: '|';
+  animation: blink 1s step-end infinite;
+}
 
+@keyframes blink {
+  from, to { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+@keyframes float {
+  0% {
+      transform: translateY(0px);
+  }
+  50% {
+      transform: translateY(-10px);
+  }
+  100% {
+      transform: translateY(0px);
+  }
+}
+
+.group:hover {
+  animation: float 6s ease-in-out infinite;
+  box-shadow: 
+      0 25px 50px -12px rgba(0, 0, 0, 0.25),
+      0 0 15px rgba(59, 130, 246, 0.1),
+      0 0 30px rgba(59, 130, 246, 0.1);
+    }
+
+.folder-list > * {
+  margin-bottom: 0.5rem;  /* Adds 8px spacing between folder items */
+}

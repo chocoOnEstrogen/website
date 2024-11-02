@@ -1,10 +1,11 @@
 import type { Metadata } from 'next'
 import './globals.css'
-import { config } from '@/config'
+import { config } from '@/configs/main'
+import { Next13NProgress } from 'nextjs13-progress'
 
 export const metadata: Metadata = {
 	title: config.name,
-	description: config.about,
+	description: `Personal information and projects of ${config.name}`,
 }
 
 export default function RootLayout({
@@ -25,7 +26,10 @@ export default function RootLayout({
 					href={config.avatar}
 				/>
 			</head>
-			<body className={`font-sans antialiased`}>{children}</body>
+			<body className={`font-sans antialiased`}>
+				<Next13NProgress color="blue" height={5} />
+				{children}
+			</body>
 		</html>
 	)
 }

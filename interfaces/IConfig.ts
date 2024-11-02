@@ -1,40 +1,42 @@
 import type { Timezones, Pronouns } from '@/types/Config'
-import { IconType } from '@icons-pack/react-simple-icons'
+import type { IconName } from '@/components/dynamic-icon'
 
 export interface IConfig {
-	githubUserName: string
 	name: string
 	pronouns: Pronouns
-	about: string
 	email: string
+	titles: string[]
 	socials?: ISocials[]
 	location: string
 	avatar: string
-	company: {
-		name: string
-		url: string
-	}
-	contact: {
-		email?: string
-		discordServer?: string
-	}
 	timezone: Timezones
 	url: string
-	frontLinks: {
+	frontLinks?: {
 		name: string
 		href: string
 	}[]
-	links: ILink[]
+	links?: ILink[]
+	skills?: ISkill[]
 }
 
-interface ISocials {
+export interface ISocials {
 	name: string
 	url: string
-	icon?: IconType
+	iconName?: IconName
+	color?: string
 }
 
-interface ILink {
+export interface ILink {
 	name: string
 	url: string
-	icon?: IconType
+	iconName?: IconName
+	color?: string
+}
+
+export interface ISkill {
+	name: string
+	iconName?: IconName
+	level: number
+	description: string
+	color: string
 }

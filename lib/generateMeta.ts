@@ -1,5 +1,5 @@
 import { Metadata } from 'next'
-import { config } from '@/config'
+import { config } from '@/configs/main'
 
 type Meta = {
 	title: string
@@ -10,7 +10,7 @@ type Meta = {
 
 export function generateMeta(meta: Meta): Metadata {
 	const baseUrl = config.url
-	const defaultDescription = config.about
+	const defaultDescription = `Personal information and projects of ${config.name}`
 	const defaultImage = `${baseUrl}/assets/images/cover.jpg` // Fallback image if meta.image is not provided
 
 	return {
@@ -44,7 +44,6 @@ export function generateMeta(meta: Meta): Metadata {
 			description: meta.description || defaultDescription,
 			images: [meta.image ? `${baseUrl}${meta.image}` : defaultImage],
 		},
-		keywords: require('../content/misc/seo/keywords.json'),
 		robots: 'index, follow',
 		generator: 'Next.js',
 	}

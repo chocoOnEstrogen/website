@@ -4,18 +4,19 @@ const nextConfig = {
 		remotePatterns: [
 			{
 				protocol: 'https',
-				hostname: 'i.choco.rip',
-				port: '',
-				pathname: '/**',
-			},
-			{
-				protocol: 'https',
 				hostname: 'spotify-recently-played-readme.vercel.app',
 				port: '',
 				pathname: '/api',
 			},
 		],
 		dangerouslyAllowSVG: true,
+	},
+	experimental: {
+		turbo: {
+			rules: {
+				'*.txt': ['raw-loader'],
+			},
+		},
 	},
 }
 

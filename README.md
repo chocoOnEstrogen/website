@@ -1,46 +1,101 @@
-<h1 align="center">Website</h1>
+<div align="center">
+  <h1>Personal Portfolio Website</h1>
+  <p>A modern, responsive portfolio website built with Next.js and TypeScript</p>
+</div>
 
-This is my personal website. It is built using [NextJS](https://nextjs.org?ref=github/chocoOnEstrogen), a Web framework. The website is hosted on [Vercel](https://vercel.com/).
+## 🚀 Features
 
-## Features
+- **Modern Stack**: Built with [Next.js](https://nextjs.org) and TypeScript
+- **Fully Responsive**: Works seamlessly on all devices and screen sizes
+- **Dark Mode**: Beautiful dark theme with particle effects
+- **Dynamic Content**: Easy content management through configuration files
+- **Project Showcase**: Integrated GitHub projects section
+- **File Explorer**: Browse and view project files with syntax highlighting
+- **Markdown Support**: Rich content rendering with math and code highlighting
+- **SEO Optimized**: Built-in meta tag generation and optimization
 
-- **Customizable**: You can easily customize the website by editing the [`config.ts`](./config.ts) file.
-- **Cute**: The website is cute and aesthetic.
-- **Responsive**: The website is responsive and works on all devices.
+## 🛠️ Tech Stack
 
+- [Next.js](https://nextjs.org) - React framework
+- [TypeScript](https://www.typescriptlang.org/) - Type safety
+- [Tailwind CSS](https://tailwindcss.com) - Styling
+- [Framer Motion](https://www.framer.com/motion/) - Animations
+- [React Syntax Highlighter](https://github.com/react-syntax-highlighter/react-syntax-highlighter) - Code highlighting
 
-## Development
+## 🚦 Getting Started
 
-To run the website locally, you need to have [Node.js](https://nodejs.org/) installed. Then, you can run the following commands:
-
+1. **Clone the repository**
 ```bash
-# Install dependencies
-$ npm install
+git clone https://github.com/yourusername/your-repo-name.git
+cd your-repo-name
 ```
 
-Edit the [`config.ts`](./config.ts) file to add your personal information. Then, run the following command:
-
+2. **Install dependencies**
 ```bash
-# Start the development server
-$ npm run dev
+npm install
+# or
+yarn install
 ```
 
-The website will be available at `http://localhost:3000/`.
+3. **Configure your website**
+Edit the configuration files in the `configs` directory:
+- `main.ts` - Main configuration (name, email, etc.)
+- `skills.ts` - Your technical skills
+- `socials.ts` - Social media links
+- `links.ts` - Additional external links
+
+4. **Start the development server**
+```bash
+npm run dev
+# or
+yarn dev
+```
+
+Visit `http://localhost:3000` to see your website.
+
+## 📁 Project Structure
+
+```
+├── app/                # Next.js app directory
+├── components/         # React components
+├── configs/           # Configuration files
+├── content/           # Markdown content
+├── interfaces/        # TypeScript interfaces
+├── lib/              # Utility functions
+└── public/           # Static assets
+```
+
+## ⚙️ Configuration
+
+The website is highly configurable through the `configs` directory:
+
+```typescript
+// configs/main.ts
+export const config: IConfig = {
+  name: 'Your Name',
+  email: 'your@email.com',
+  location: 'Your Location',
+  // ... other configurations
+}
+```
+
+## 📝 Content Management
+
+Add your content in the `content` directory:
+- `pages/` - Static pages (About, Contact, etc.)
+- `posts/` - Blog posts (if enabled)
+- `projects/` - Project descriptions
+
+## 🎨 Customization
+
+1. **Styling**: Modify the Tailwind configuration in `tailwind.config.js`
+2. **Components**: Customize components in the `components` directory
+3. **Layout**: Adjust the layout in `components/Layout.tsx`
+
 
 > [!IMPORTANT]  
-> If you do decide to use this project as a personal website, please make sure to change the content in the `config.ts` file to your own information. **HOWEVER**, you are **NOT** allowed to remove the footer credit. You can change the text, but you must keep the link to this repository.
+> While you're free to use this project for your personal website, please maintain the attribution in the footer. You can modify the text but must keep the link to the original repository.
 
-## TODO
+## 🤝 Contributing
 
-- ~~Add a blog section~~
-- Add a projects section
-- Add a contact form
-
-## Uploading Images
-
-To upload images like in the image below, you can use the [image-uploader](https://github.com/chocoOnEstrogen/image-uploader) component I created. It is a simple image uploader that uploads images to a server with an accessible URL.
-
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](./LICENSE) file for details.
+Contributions are welcome! Please feel free to submit a Pull Request.
