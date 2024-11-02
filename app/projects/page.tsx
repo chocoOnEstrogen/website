@@ -10,8 +10,27 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export const dynamic = 'force-dynamic'
+export const revalidate = 3600 // Revalidate every hour
 
 export default async function ProjectsRoute() {
-	const projects = await getProjects()
-	return <ProjectsPage projects={projects} />
+	try {
+		const projects = await getProjects()
+		
+		if (!projects || projects.length === 0) {
+			return (
+				<div className="min-h-screen flex items-center justify-center">
+					<p>No projects available at the moment.</p>
+				</div>
+			)
+		}
+		
+		return <ProjectsPage projects={projects} />
+	} catch (error) {
+		console.error('Error in ProjectsRoute:', error)
+		return (
+			<div className="min-h-screen flex items-center justify-center">
+				<p>Unable to load projects. Please try again later.</p>
+			</div>
+		)
+	}
 }

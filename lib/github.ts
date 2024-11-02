@@ -2,11 +2,12 @@ import { cache } from 'react'
 
 const USERNAME = 'chocoOnEstrogen'
 const BASE_URL = 'https://api.github.com'
+const TOKEN = process.env.GITHUB_TOKEN
 
 export const getProjects = cache(async () => {
 	const res = await fetch(`https://api.github.com/users/${USERNAME}/repos`, {
 		headers: {
-			Authorization: `token ${process.env.GITHUB_TOKEN}`,
+			Authorization: `token ${TOKEN}`,
 		},
 		next: { revalidate: 3600 }, // Cache for 1 hour
 	})
@@ -31,7 +32,7 @@ export const getProjectDetails = cache(async (name: string) => {
 	const [repo, readme, contents] = await Promise.all([
 		// Get repository details
 		fetch(`${BASE_URL}/repos/${USERNAME}/${name}`, {
-			headers: { Authorization: `token ${process.env.GITHUB_TOKEN}` },
+			headers: { Authorization: `token ${TOKEN}` },
 			next: { revalidate: 3600 },
 		}).then((res) => res.json()),
 
@@ -60,7 +61,7 @@ export const getProjectDetails = cache(async (name: string) => {
 
 export const getBranches = cache(async (name: string) => {
 	const res = await fetch(`${BASE_URL}/repos/${USERNAME}/${name}/branches`, {
-		headers: { Authorization: `token ${process.env.GITHUB_TOKEN}` },
+		headers: { Authorization: `token ${TOKEN}` },
 		next: { revalidate: 3600 },
 	})
 
@@ -79,7 +80,7 @@ export const getFileContent = cache(
 			`${BASE_URL}/repos/${USERNAME}/${name}/contents/${cleanPath}?ref=${branch}`,
 			{
 				headers: {
-					Authorization: `token ${process.env.GITHUB_TOKEN}`,
+					Authorization: `token ${TOKEN}`,
 					Accept: 'application/vnd.github.raw',
 				},
 				next: { revalidate: 3600 },
@@ -102,7 +103,7 @@ export const getDirContent = cache(
 		const res = await fetch(
 			`${BASE_URL}/repos/${USERNAME}/${name}/contents/${cleanPath}?ref=${branch}`,
 			{
-				headers: { Authorization: `token ${process.env.GITHUB_TOKEN}` },
+				headers: { Authorization: `token ${TOKEN}` },
 				next: { revalidate: 3600 },
 			},
 		)
@@ -123,7 +124,7 @@ export const getFileCommits = cache(
 		const res = await fetch(
 			`${BASE_URL}/repos/${USERNAME}/${name}/commits?path=${cleanPath}&sha=${branch}`,
 			{
-				headers: { Authorization: `token ${process.env.GITHUB_TOKEN}` },
+				headers: { Authorization: `token ${TOKEN}` },
 				next: { revalidate: 3600 },
 			},
 		)
