@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import './globals.css'
 import { config } from '@/configs/main'
 import { Next13NProgress } from 'nextjs13-progress'
+import { Oneko } from '@/components/oneko'
 
 export const metadata: Metadata = {
 	title: config.name,
@@ -27,6 +28,7 @@ export default function RootLayout({
 				/>
 			</head>
 			<body className={`font-sans antialiased`}>
+				<Oneko />
 				<Next13NProgress color="blue" height={5} />
 				{children}
 			</body>
