@@ -22,6 +22,10 @@ export const config: IConfig = {
 			href: '/links',
 		},
 		{
+			name: 'Posts',
+			href: '/posts',
+		},
+		{
 			name: 'Github',
 			href: 'https://github.com/choco-rip',
 		},

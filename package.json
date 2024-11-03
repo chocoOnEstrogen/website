@@ -11,6 +11,7 @@
     "format": "prettier --cache --write . --ignore-path .prettierignore"
   },
   "dependencies": {
+    "@atproto/api": "^0.13.14",
     "@icons-pack/react-simple-icons": "^10.0.0",
     "@radix-ui/react-avatar": "^1.1.1",
     "@radix-ui/react-dialog": "^1.1.2",
@@ -20,12 +21,14 @@
     "@radix-ui/react-select": "^2.1.2",
     "@radix-ui/react-slot": "^1.1.0",
     "@radix-ui/react-tabs": "^1.1.1",
+    "@vercel/kv": "^3.0.0",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "date-fns": "^4.1.0",
     "framer-motion": "^11.11.11",
     "gray-matter": "^4.0.3",
     "highlight.js": "^11.10.0",
+    "ioredis": "^5.4.1",
     "katex": "^0.16.11",
     "lucide-react": "^0.439.0",
     "marked": "^14.1.3",
