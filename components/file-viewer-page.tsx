@@ -271,13 +271,13 @@ export function FileViewerPage({
 							</div>
 
 							{!isDirectory && (
-								<div className="flex items-center space-x-2">
+								<div className="flex flex-wrap items-center gap-2">
 									{/* Branch selector */}
 									<DropdownMenu>
 										<DropdownMenuTrigger asChild>
 											<Button variant="ghost" size="sm" title="Switch branch">
 												<GitBranch className="mr-2 h-4 w-4" />
-												{currentBranch}
+												<span className="hidden sm:inline">{currentBranch}</span>
 											</Button>
 										</DropdownMenuTrigger>
 										<DropdownMenuContent>
@@ -299,79 +299,71 @@ export function FileViewerPage({
 										</DropdownMenuContent>
 									</DropdownMenu>
 
-									{/* Font size controls */}
-									<Button
-										variant="ghost"
-										size="sm"
-										onClick={() => setFontSize(Math.max(10, fontSize - 1))}
-										title="Decrease font size"
-									>
-										<ZoomOut className="h-4 w-4" />
-									</Button>
-									<Button
-										variant="ghost"
-										size="sm"
-										onClick={() => setFontSize(Math.min(24, fontSize + 1))}
-										title="Increase font size"
-									>
-										<ZoomIn className="h-4 w-4" />
-									</Button>
+									{/* Controls group */}
+									<div className="flex items-center gap-1">
+										<Button
+											variant="ghost"
+											size="sm"
+											onClick={() => setFontSize(Math.max(10, fontSize - 1))}
+											title="Decrease font size"
+										>
+											<ZoomOut className="h-4 w-4" />
+										</Button>
+										<Button
+											variant="ghost"
+											size="sm"
+											onClick={() => setFontSize(Math.min(24, fontSize + 1))}
+											title="Increase font size"
+										>
+											<ZoomIn className="h-4 w-4" />
+										</Button>
+									</div>
 
-									{/* Word wrap toggle */}
-									<Button
-										variant="ghost"
-										size="sm"
-										onClick={() => setWordWrap(!wordWrap)}
-										title={wordWrap ? 'Disable word wrap' : 'Enable word wrap'}
-									>
-										<WrapText className="h-4 w-4" />
-									</Button>
+									<div className="flex items-center gap-1">
+										<Button
+											variant="ghost"
+											size="sm"
+											onClick={() => setWordWrap(!wordWrap)}
+											title={wordWrap ? 'Disable word wrap' : 'Enable word wrap'}
+										>
+											<WrapText className="h-4 w-4" />
+										</Button>
+										<Button
+											variant="ghost"
+											size="sm"
+											onClick={() => setShowLineNumbers(!showLineNumbers)}
+											title={showLineNumbers ? 'Hide line numbers' : 'Show line numbers'}
+										>
+											{showLineNumbers ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
+										</Button>
+									</div>
 
-									{/* Line numbers toggle */}
-									<Button
-										variant="ghost"
-										size="sm"
-										onClick={() => setShowLineNumbers(!showLineNumbers)}
-										title={
-											showLineNumbers ? 'Hide line numbers' : (
-												'Show line numbers'
-											)
-										}
-									>
-										{showLineNumbers ?
-											<EyeOff className="h-4 w-4" />
-										:	<Eye className="h-4 w-4" />}
-									</Button>
-
-									{/* Copy button */}
-									<Button
-										variant="ghost"
-										size="sm"
-										onClick={handleCopyContent}
-										title="Copy content"
-									>
-										{copied ?
-											<Check className="h-4 w-4 text-green-500" />
-										:	<Copy className="h-4 w-4" />}
-									</Button>
-
-									{/* Download button */}
-									<Button
-										variant="ghost"
-										size="sm"
-										onClick={handleDownload}
-										title="Download file"
-									>
-										<Download className="h-4 w-4" />
-									</Button>
+									<div className="flex items-center gap-1">
+										<Button
+											variant="ghost"
+											size="sm"
+											onClick={handleCopyContent}
+											title="Copy content"
+										>
+											{copied ? <Check className="h-4 w-4 text-green-500" /> : <Copy className="h-4 w-4" />}
+										</Button>
+										<Button
+											variant="ghost"
+											size="sm"
+											onClick={handleDownload}
+											title="Download file"
+										>
+											<Download className="h-4 w-4" />
+										</Button>
+									</div>
 								</div>
 							)}
 						</div>
 
 						{isDirectory ?
 							// Directory listing
-							<div className="rounded-lg bg-gray-800/50 p-4 backdrop-blur-sm">
-								<table className="w-full">
+							<div className="overflow-x-auto rounded-lg bg-gray-800/50 p-4 backdrop-blur-sm">
+								<table className="w-full min-w-[640px]">
 									<thead>
 										<tr className="text-left">
 											<th className="pb-4">Name</th>
