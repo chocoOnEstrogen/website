@@ -102,25 +102,9 @@ export const Oneko = () => {
 
       idleTime += 1
 
-      if (idleTime > 10 && Math.floor(Math.random() * 200) == 0 && idleAnimation == null) {
-        const availableIdleAnimations = ['sleeping', 'scratchSelf']
-        
-        if (nekoPosX < 32) {
-          availableIdleAnimations.push('scratchWallW')
-        }
-        if (nekoPosY < 32) {
-          availableIdleAnimations.push('scratchWallN')
-        }
-        if (nekoPosX > window.innerWidth - 32) {
-          availableIdleAnimations.push('scratchWallE')
-        }
-        if (nekoPosY > window.innerHeight - 32) {
-          availableIdleAnimations.push('scratchWallS')
-        }
-
-        idleAnimation = availableIdleAnimations[
-          Math.floor(Math.random() * availableIdleAnimations.length)
-        ]
+      // Start sleeping animation after 3 seconds (30 frames at 100ms per frame)
+      if (idleTime > 30 && idleAnimation == null) {
+        idleAnimation = 'sleeping'
       }
 
       switch (idleAnimation) {
@@ -130,9 +114,7 @@ export const Oneko = () => {
             break
           }
           setSprite('sleeping', Math.floor(idleAnimationFrame / 4))
-          if (idleAnimationFrame > 192) {
-            resetIdleAnimation()
-          }
+          // Remove the time limit for sleeping animation
           break
         case 'scratchWallN':
         case 'scratchWallS':
