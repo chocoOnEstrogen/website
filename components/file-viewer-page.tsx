@@ -277,7 +277,9 @@ export function FileViewerPage({
 										<DropdownMenuTrigger asChild>
 											<Button variant="ghost" size="sm" title="Switch branch">
 												<GitBranch className="mr-2 h-4 w-4" />
-												<span className="hidden sm:inline">{currentBranch}</span>
+												<span className="hidden sm:inline">
+													{currentBranch}
+												</span>
 											</Button>
 										</DropdownMenuTrigger>
 										<DropdownMenuContent>
@@ -324,7 +326,9 @@ export function FileViewerPage({
 											variant="ghost"
 											size="sm"
 											onClick={() => setWordWrap(!wordWrap)}
-											title={wordWrap ? 'Disable word wrap' : 'Enable word wrap'}
+											title={
+												wordWrap ? 'Disable word wrap' : 'Enable word wrap'
+											}
 										>
 											<WrapText className="h-4 w-4" />
 										</Button>
@@ -332,9 +336,15 @@ export function FileViewerPage({
 											variant="ghost"
 											size="sm"
 											onClick={() => setShowLineNumbers(!showLineNumbers)}
-											title={showLineNumbers ? 'Hide line numbers' : 'Show line numbers'}
+											title={
+												showLineNumbers ? 'Hide line numbers' : (
+													'Show line numbers'
+												)
+											}
 										>
-											{showLineNumbers ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
+											{showLineNumbers ?
+												<EyeOff className="h-4 w-4" />
+											:	<Eye className="h-4 w-4" />}
 										</Button>
 									</div>
 
@@ -345,7 +355,9 @@ export function FileViewerPage({
 											onClick={handleCopyContent}
 											title="Copy content"
 										>
-											{copied ? <Check className="h-4 w-4 text-green-500" /> : <Copy className="h-4 w-4" />}
+											{copied ?
+												<Check className="h-4 w-4 text-green-500" />
+											:	<Copy className="h-4 w-4" />}
 										</Button>
 										<Button
 											variant="ghost"

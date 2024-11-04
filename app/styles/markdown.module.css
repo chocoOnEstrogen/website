@@ -53,7 +53,7 @@
 }
 
 .markdown pre {
-  @apply bg-gray-900 rounded-lg p-4 mb-4 overflow-x-auto relative;
+  @apply bg-[#1e1e2e] rounded-lg p-4 mb-4 overflow-x-auto relative;
 }
 
 .markdown pre:hover .toolbar {
@@ -67,11 +67,11 @@
 }
 
 .markdown code {
-  @apply bg-gray-900 px-1.5 py-0.5 rounded text-sm font-mono;
+  @apply bg-[#1e1e2e] px-1.5 py-0.5 rounded text-sm font-mono;
 }
 
 .markdown pre code {
-  @apply bg-transparent p-0;
+  @apply bg-transparent p-0 text-gray-200;
 }
 
 .markdown table {
@@ -114,7 +114,7 @@
 
 /* GitHub-style syntax highlighting theme adjustments */
 .markdown .hljs {
-  @apply bg-gray-900;
+  @apply bg-transparent text-gray-200;
 }
 
 /* GitHub-style alerts */
@@ -163,7 +163,7 @@
 
 /* Style for the code container */
 .markdown pre {
-  @apply bg-gray-900 rounded-lg p-4 mb-4 overflow-x-auto relative;
+  @apply bg-[#1e1e2e] rounded-lg p-4 mb-4 overflow-x-auto relative;
 }
 
 /* Hover effect for the toolbar */
@@ -196,4 +196,21 @@
 /* Improve button hover states */
 .toolbar button:hover {
   @apply bg-white/10;
+}
+
+/* Code block specific code */
+.markdown pre code {
+  @apply bg-transparent p-0 text-gray-200;
+}
+
+/* Code wrapper styling */
+.markdown .code-wrapper {
+  @apply bg-[#1e1e2e] rounded-lg relative;
+}
+
+/* Copy button styling */
+.markdown .copy-button {
+  @apply absolute top-2 right-2 p-2 bg-gray-800 text-gray-300 rounded-lg 
+    opacity-0 group-hover:opacity-100 transition-opacity duration-200 
+    hover:bg-gray-700;
 }
