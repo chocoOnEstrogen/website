@@ -6,21 +6,26 @@ import { Check, ChevronDown } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
 export interface SelectOption {
-	value: string
+	value: string | null
 	label: string
 }
 
 interface SelectProps {
-	value: string
-	onValueChange: (value: string) => void
+	value: string | null
+	onValueChange: (value: string | null) => void
 	options: SelectOption[]
 }
 
 export function Select({ value, onValueChange, options }: SelectProps) {
 	return (
-		<SelectPrimitive.Root value={value} onValueChange={onValueChange}>
+		<SelectPrimitive.Root 
+			value={value || undefined}
+			onValueChange={onValueChange}
+		>
 			<SelectPrimitive.Trigger className="flex h-10 w-full items-center justify-between rounded-md border border-gray-700 bg-gray-800 px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50">
-				<SelectPrimitive.Value />
+				<SelectPrimitive.Value>
+					{options.find(opt => opt.value === value)?.label}
+				</SelectPrimitive.Value>
 				<SelectPrimitive.Icon>
 					<ChevronDown className="h-4 w-4 opacity-50" />
 				</SelectPrimitive.Icon>
@@ -30,11 +35,12 @@ export function Select({ value, onValueChange, options }: SelectProps) {
 					<SelectPrimitive.Viewport className="p-1">
 						{options.map((option) => (
 							<SelectPrimitive.Item
-								key={option.value}
-								value={option.value}
+								key={option.value ?? 'all'}
+								value={option.value ?? 'all'}
 								className={cn(
 									'relative flex cursor-default select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm font-medium outline-none focus:bg-gray-700 data-[disabled]:pointer-events-none data-[disabled]:opacity-50',
 								)}
+								disabled={option.value === null}
 							>
 								<span className="absolute left-2 flex h-3.5 w-3.5 items-center justify-center">
 									<SelectPrimitive.ItemIndicator>
