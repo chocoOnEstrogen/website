@@ -65,7 +65,7 @@ export default function BlogPage({ params }: Props) {
 			})
 
 			if (!post) return notFound()
-			return <BlogPost post={post} locale={locale} />
+			return <BlogPost post={post} locale={locale} allPosts={allPosts} />
 		}
 
 		// Filter posts by date components
