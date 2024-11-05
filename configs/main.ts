@@ -9,7 +9,7 @@ export const config: IConfig = {
 	pronouns: 'she/her/hers/herself',
 	name: 'Stella',
 	titles: ['Full-Stack Developer', 'Anime Lover', 'Wannabe VTuber'],
-	avatar: '/me.jpg',
+	avatar: '/me.png',
 	timezone: 'Asia/Tokyo',
 	url: 'https://choco.rip',
 	frontLinks: [
@@ -26,8 +26,12 @@ export const config: IConfig = {
 			href: '/posts',
 		},
 		{
+			name: 'Blog',
+			href: '/blog',
+		},
+		{
 			name: 'Github',
-			href: 'https://github.com/choco-rip',
+			href: 'https://github.com/chocoOnEstrogen',
 		},
 	],
 	socials,
