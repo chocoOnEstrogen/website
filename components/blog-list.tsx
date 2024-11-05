@@ -1,7 +1,7 @@
 'use client'
 
 import { Content } from '@/lib/content'
-import Link from 'next/link'
+import { Link } from 'nextjs13-progress'
 import Layout from './Layout'
 import { useState, useMemo } from 'react'
 import { Select } from '@/components/ui/select'
