@@ -21,7 +21,7 @@ Let’s start by examining a few of the common criticisms we often hear about po
 
     Example (Inefficient):
     
-    ```
+    ```python
     def sum_numbers(arr):
         result = 0
         for num in arr:
@@ -31,7 +31,7 @@ Let’s start by examining a few of the common criticisms we often hear about po
 
     Example (Efficient with NumPy):
     
-    ```
+    ```python
     import numpy as np
     arr = np.array([1, 2, 3, 4])
     result = np.sum(arr)
@@ -43,7 +43,7 @@ Let’s start by examining a few of the common criticisms we often hear about po
 
     JavaScript has its quirks, particularly with types and coercion. You’ll often hear people say, “JavaScript is unpredictable,” as they point to cases like:
 
-    ```
+    ```javascript
     console.log(0 == false) // true
     console.log(0 === false) // false
     ```
@@ -56,7 +56,7 @@ Let’s start by examining a few of the common criticisms we often hear about po
 
     Take a simple example of setting a variable in a class:
 
-    ```
+    ```java
     class MyClass {
         private int number;
         public MyClass(int number) {
