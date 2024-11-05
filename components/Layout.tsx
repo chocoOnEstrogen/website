@@ -55,8 +55,8 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 
 			draw() {
 				if (ctx) {
-					ctx.fillStyle = 'rgba(255,255,255,0.8)'
-					ctx.strokeStyle = 'rgba(255,255,255,0.8)'
+					ctx.fillStyle = 'rgba(255,255,255,0.6)'
+					ctx.strokeStyle = 'rgba(255,255,255,0.6)'
 					ctx.lineWidth = 2
 					ctx.beginPath()
 					ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2)
@@ -107,7 +107,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 	return (
 		<>
 			<div className="flex min-h-screen flex-col bg-gray-900 text-white">
-				<canvas id="particle-canvas" className="fixed inset-0 z-0" />
+				<canvas id="particle-canvas" className="fixed inset-0 z-0 blur-[2px]" />
 
 				{/* Header */}
 				<header
