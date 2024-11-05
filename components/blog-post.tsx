@@ -8,7 +8,7 @@ import markdownStyles from '@/app/styles/markdown.module.css'
 import 'highlight.js/styles/github-dark.css'
 import hljs from 'highlight.js'
 import { useEffect } from 'react'
-import { Link } from 'nextjs13-progress'
+import Link from 'next/link'
 
 interface Props {
 	post: Content
