@@ -9,6 +9,7 @@ import 'highlight.js/styles/github-dark.css'
 import hljs from 'highlight.js'
 import { useEffect } from 'react'
 import Link from 'next/link'
+import { languages } from '@/configs/hljs'
 
 interface Props {
 	post: Content
@@ -48,30 +49,44 @@ function getSimilarPosts(
 
 export function BlogPost({ post, locale = 'en-US', allPosts = [] }: Props) {
 	useEffect(() => {
-		// Initialize syntax highlighting
-		document.querySelectorAll('pre code').forEach((block) => {
-			hljs.highlightElement(block as HTMLElement)
-		})
+		try {
+			// Initialize syntax highlighting with specific languages
+			hljs.configure({
+				ignoreUnescapedHTML: true,
+				languages: languages,
+			})
 
-		// Add click handlers for copy buttons
-		document.querySelectorAll('.copy-button').forEach((button) => {
-			button.addEventListener('click', () => {
-				const codeBlock = button.closest('.code-wrapper')?.querySelector('code')
-				if (codeBlock) {
-					navigator.clipboard.writeText(codeBlock.textContent || '')
-					const copyIcon = button.querySelector('.copy-icon')
-					const checkIcon = button.querySelector('.check-icon')
-					if (copyIcon && checkIcon) {
-						copyIcon.classList.add('hidden')
-						checkIcon.classList.remove('hidden')
-						setTimeout(() => {
-							copyIcon.classList.remove('hidden')
-							checkIcon.classList.add('hidden')
-						}, 2000)
-					}
+			// Use a more specific selector and add error handling
+			document.querySelectorAll('pre code').forEach((block) => {
+				try {
+					hljs.highlightElement(block as HTMLElement)
+				} catch (e) {
+					console.warn('Failed to highlight code block:', e)
 				}
 			})
-		})
+
+			// Add click handlers for copy buttons
+			document.querySelectorAll('.copy-button').forEach((button) => {
+				button.addEventListener('click', () => {
+					const codeBlock = button.closest('.code-wrapper')?.querySelector('code')
+					if (codeBlock) {
+						navigator.clipboard.writeText(codeBlock.textContent || '')
+						const copyIcon = button.querySelector('.copy-icon')
+						const checkIcon = button.querySelector('.check-icon')
+						if (copyIcon && checkIcon) {
+							copyIcon.classList.add('hidden')
+							checkIcon.classList.remove('hidden')
+							setTimeout(() => {
+								copyIcon.classList.remove('hidden')
+								checkIcon.classList.add('hidden')
+							}, 2000)
+						}
+					}
+				})
+			})
+		} catch (e) {
+			console.error('Error initializing syntax highlighting:', e)
+		}
 	}, [post])
 
 	const similarPosts = getSimilarPosts(post, allPosts)
