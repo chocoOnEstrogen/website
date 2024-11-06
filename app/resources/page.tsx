@@ -19,8 +19,7 @@ export default function TransResourcesPage() {
                     {/* Important Notice */}
                     <div className="rounded-lg border border-yellow-500/50 bg-yellow-500/10 p-4">
                         <p className="text-yellow-200">
-                            ⚠️ The information provided here is for informational purposes only. 
-                            Always consult with healthcare professionals for medical advice.
+                            If you want to join a friendly trans community, you can join my <a href="https://discord.gg/x8A89TVJUv" className="text-yellow-400 hover:underline">Discord server</a>.
                         </p>
                     </div>
 
