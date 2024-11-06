@@ -130,15 +130,54 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 							</Link>
 
 							<div className="flex items-center space-x-6">
-								{config.frontLinks?.map((link) => (
-									<Link
-										key={link.name}
-										href={link.href}
-										className="group relative transition-colors hover:text-purple-400"
-									>
-										{link.name}
-										<span className="absolute inset-x-0 -bottom-1 h-0.5 scale-x-0 bg-purple-400 transition-transform group-hover:scale-x-100" />
-									</Link>
+								{config.header?.map((item) => (
+									<div key={item.name} className="group relative">
+										{item.dropdown ?
+											<>
+												<button className="group flex items-center space-x-1 transition-colors hover:text-purple-400">
+													<span>{item.name}</span>
+													<svg
+														className="h-4 w-4 transition-transform group-hover:rotate-180"
+														fill="none"
+														viewBox="0 0 24 24"
+														stroke="currentColor"
+													>
+														<path
+															strokeLinecap="round"
+															strokeLinejoin="round"
+															strokeWidth={2}
+															d="M19 9l-7 7-7-7"
+														/>
+													</svg>
+												</button>
+												<div className="absolute right-0 mt-2 w-48 origin-top-right scale-0 transform rounded-md bg-gray-800 py-1 opacity-0 transition-all group-hover:scale-100 group-hover:opacity-100">
+													{item.dropdown.map((dropdownItem) => (
+														<Link
+															key={dropdownItem.name}
+															href={dropdownItem.href}
+															className="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white"
+														>
+															{dropdownItem.name}
+														</Link>
+													))}
+												</div>
+											</>
+										:	<Link
+												href={item.href}
+												className="transition-colors hover:text-purple-400"
+												target={
+													item.href.startsWith('http') ? '_blank' : undefined
+												}
+												rel={
+													item.href.startsWith('http') ?
+														'noopener noreferrer'
+													:	undefined
+												}
+											>
+												{item.name}
+											</Link>
+										}
+									</div>
 								))}
 							</div>
 						</div>

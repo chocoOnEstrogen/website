@@ -68,7 +68,9 @@ export function BlogPost({ post, locale = 'en-US', allPosts = [] }: Props) {
 			// Add click handlers for copy buttons
 			document.querySelectorAll('.copy-button').forEach((button) => {
 				button.addEventListener('click', () => {
-					const codeBlock = button.closest('.code-wrapper')?.querySelector('code')
+					const codeBlock = button
+						.closest('.code-wrapper')
+						?.querySelector('code')
 					if (codeBlock) {
 						navigator.clipboard.writeText(codeBlock.textContent || '')
 						const copyIcon = button.querySelector('.copy-icon')

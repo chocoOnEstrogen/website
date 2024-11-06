@@ -11,12 +11,18 @@ export interface IConfig {
 	avatar: string
 	timezone: Timezones
 	url: string
-	frontLinks?: {
+	links?: ILink[]
+	skills?: ISkill[]
+	header?: IHeader[]
+}
+
+export interface IHeader {
+	name: string
+	href: string
+	dropdown?: {
 		name: string
 		href: string
 	}[]
-	links?: ILink[]
-	skills?: ISkill[]
 }
 
 export interface ISocials {

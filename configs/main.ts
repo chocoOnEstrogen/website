@@ -2,6 +2,7 @@ import type { IConfig } from '@/interfaces/IConfig'
 import { skills } from '@/configs/skills'
 import { socials } from '@/configs/socials'
 import { links } from '@/configs/links'
+import { header } from '@/configs/header'
 
 export const config: IConfig = {
 	location: 'Tokyo, Japan',
@@ -12,29 +13,8 @@ export const config: IConfig = {
 	avatar: '/me.png',
 	timezone: 'Asia/Tokyo',
 	url: 'https://choco.rip',
-	frontLinks: [
-		{
-			name: 'Projects',
-			href: '/projects',
-		},
-		{
-			name: 'Links',
-			href: '/links',
-		},
-		{
-			name: 'Posts',
-			href: '/posts',
-		},
-		{
-			name: 'Blog',
-			href: '/blog',
-		},
-		{
-			name: 'Github',
-			href: 'https://github.com/chocoOnEstrogen',
-		},
-	],
 	socials,
 	links,
 	skills,
+	header,
 }

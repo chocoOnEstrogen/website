@@ -66,9 +66,10 @@ export function unescapeHtml(safe: string): string {
 		.replace(/&#x60;/g, '`')
 		.replace(/&#x2F;/g, '/')
 		.replace(/&#(\d+);/g, (_, dec) => String.fromCharCode(Number(dec))) // Decimal entities
-		.replace(/&#x([0-9A-Fa-f]+);/g, (_, hex) => String.fromCharCode(parseInt(hex, 16))) // Hexadecimal entities
+		.replace(/&#x([0-9A-Fa-f]+);/g, (_, hex) =>
+			String.fromCharCode(parseInt(hex, 16)),
+		) // Hexadecimal entities
 }
-
 
 export function formatDate(date: string, includeRelative = false) {
 	const currentDate = new Date()

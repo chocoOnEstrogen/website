@@ -14,7 +14,6 @@ import rehypeRaw from 'rehype-raw'
 import rehypeStringify from 'rehype-stringify'
 import { unescapeHtml } from './utils'
 
-
 /**
  * Represents the metadata of a content file.
  */
@@ -89,7 +88,7 @@ function parseFrontmatter(
 				(match, tag, content) => {
 					const id = slugify(content)
 					return `<${tag} id="${id}">${content}</${tag}>`
-				}
+				},
 			)
 
 			// Replace video tags with custom player
@@ -99,7 +98,7 @@ function parseFrontmatter(
 					<div class="custom-video-player">
 						<div data-video-src="${src}"></div>
 					</div>
-				`
+				`,
 			)
 
 			// Replace img tags with custom viewer
@@ -109,7 +108,7 @@ function parseFrontmatter(
 					<div class="custom-image-viewer">
 						<div data-image-src="${src}" data-image-alt="${alt}"></div>
 					</div>
-				`
+				`,
 			)
 
 			// Process code blocks with syntax highlighting
@@ -119,9 +118,10 @@ function parseFrontmatter(
 					// First decode standard HTML entities, then decode any remaining special entities
 					const decodedCode = unescapeHtml(code)
 
-					const highlightedCode = language ?
-						hljs.highlight(decodedCode, { language }).value :
-						hljs.highlightAuto(decodedCode).value
+					const highlightedCode =
+						language ?
+							hljs.highlight(decodedCode, { language }).value
+						:	hljs.highlightAuto(decodedCode).value
 
 					return `
 						<div class="code-wrapper relative group">
@@ -132,7 +132,7 @@ function parseFrontmatter(
 							</button>
 						</div>
 					`
-				}
+				},
 			)
 
 			return {
