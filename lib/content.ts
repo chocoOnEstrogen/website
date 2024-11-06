@@ -94,7 +94,7 @@ function parseFrontmatter(
 			// Replace video tags with custom player
 			htmlContent = htmlContent.replace(
 				/<video([^>]*)src="([^"]*)"([^>]*)>/g,
-				(_, before, src, after) => `
+				(_, before, src) => `
 					<div class="custom-video-player">
 						<div data-video-src="${src}"></div>
 					</div>
@@ -104,7 +104,7 @@ function parseFrontmatter(
 			// Replace img tags with custom viewer
 			htmlContent = htmlContent.replace(
 				/<img([^>]*)src="([^"]*)"([^>]*)alt="([^"]*)"([^>]*)>/g,
-				(_, before, src, middle, alt, after) => `
+				(_, before, src, middle, alt) => `
 					<div class="custom-image-viewer">
 						<div data-image-src="${src}" data-image-alt="${alt}"></div>
 					</div>

@@ -5,10 +5,9 @@ import { Play, Pause, Volume2, Volume1, VolumeX, Volume } from 'lucide-react'
 
 interface VideoPlayerProps {
 	src: string
-	controls?: boolean
 }
 
-export function VideoPlayer({ src, controls = true }: VideoPlayerProps) {
+export function VideoPlayer({ src }: VideoPlayerProps) {
 	const videoRef = useRef<HTMLVideoElement>(null)
 	const [isPlaying, setIsPlaying] = useState(false)
 	const [progress, setProgress] = useState(0)
