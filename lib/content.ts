@@ -12,6 +12,8 @@ import remarkParse from 'remark-parse'
 import remarkRehype from 'remark-rehype'
 import rehypeRaw from 'rehype-raw'
 import rehypeStringify from 'rehype-stringify'
+import { unescapeHtml } from './utils'
+
 
 /**
  * Represents the metadata of a content file.
@@ -79,30 +81,63 @@ function parseFrontmatter(
 				.use(remarkMath)
 				.use(rehypeKatex)
 
-			const html = htmlProcessor.processSync(content).value as string
+			let htmlContent = htmlProcessor.processSync(content).toString()
 
-			let htmlContent = html.toString()
-
+			// Add IDs to headings
 			htmlContent = htmlContent.replace(
-				/<pre><code class="language-(\w+)">([\s\S]*?)<\/code><\/pre>/g,
-				(_, language, code) => {
-					const highlightedCode = hljs.highlight(code, { language }).value
+				/<(h[1-6])>(.*?)<\/h[1-6]>/g,
+				(match, tag, content) => {
+					const id = slugify(content)
+					return `<${tag} id="${id}">${content}</${tag}>`
+				}
+			)
+
+			// Replace video tags with custom player
+			htmlContent = htmlContent.replace(
+				/<video([^>]*)src="([^"]*)"([^>]*)>/g,
+				(_, before, src, after) => `
+					<div class="custom-video-player">
+						<div data-video-src="${src}"></div>
+					</div>
+				`
+			)
+
+			// Replace img tags with custom viewer
+			htmlContent = htmlContent.replace(
+				/<img([^>]*)src="([^"]*)"([^>]*)alt="([^"]*)"([^>]*)>/g,
+				(_, before, src, middle, alt, after) => `
+					<div class="custom-image-viewer">
+						<div data-image-src="${src}" data-image-alt="${alt}"></div>
+					</div>
+				`
+			)
+
+			// Process code blocks with syntax highlighting
+			htmlContent = htmlContent.replace(
+				/<pre><code( class="language-(\w+)")?>([\s\S]*?)<\/code><\/pre>/g,
+				(_, classAttr, language, code) => {
+					// First decode standard HTML entities, then decode any remaining special entities
+					const decodedCode = unescapeHtml(code)
+
+					const highlightedCode = language ?
+						hljs.highlight(decodedCode, { language }).value :
+						hljs.highlightAuto(decodedCode).value
 
 					return `
-          <div class="code-wrapper relative group">
-            <pre><code class="hljs code language-${language}">${highlightedCode}</code></pre>
-            <button class="copy-button absolute top-2 right-2 p-2 bg-gray-700 text-gray-300 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 hover:bg-gray-600">
-              <span class="copy-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg></span>
-              <span class="check-icon hidden"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
-            </button>
-          </div>
-        `
-				},
+						<div class="code-wrapper relative group">
+							<pre><code class="hljs code${language ? ` language-${language}` : ''}">${highlightedCode}</code></pre>
+							<button class="copy-button absolute top-2 right-2 p-2 bg-gray-700 text-gray-300 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 hover:bg-gray-600">
+								<span class="copy-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg></span>
+								<span class="check-icon hidden"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+							</button>
+						</div>
+					`
+				}
 			)
 
 			return {
 				metadata: data,
-				content: htmlContent.trim(),
+				content: htmlContent,
 				rawContent: content,
 			}
 		case 'html':
@@ -346,4 +381,11 @@ export function extToType(ext: string): string {
 	}
 
 	return mimeTypes[ext.toLowerCase()] || 'text/plain'
+}
+
+function slugify(text: string): string {
+	return text
+		.toLowerCase()
+		.replace(/[^a-z0-9]+/g, '-')
+		.replace(/(^-|-$)/g, '')
 }

@@ -56,6 +56,20 @@ export function escapeHtml(unsafe: string): string {
 		.replace(/\//g, '&#x2F;')
 }
 
+export function unescapeHtml(safe: string): string {
+	return safe
+		.replace(/&amp;/g, '&')
+		.replace(/&lt;/g, '<')
+		.replace(/&gt;/g, '>')
+		.replace(/&quot;/g, '"')
+		.replace(/&apos;/g, "'")
+		.replace(/&#x60;/g, '`')
+		.replace(/&#x2F;/g, '/')
+		.replace(/&#(\d+);/g, (_, dec) => String.fromCharCode(Number(dec))) // Decimal entities
+		.replace(/&#x([0-9A-Fa-f]+);/g, (_, hex) => String.fromCharCode(parseInt(hex, 16))) // Hexadecimal entities
+}
+
+
 export function formatDate(date: string, includeRelative = false) {
 	const currentDate = new Date()
 	if (!date.includes('T')) {

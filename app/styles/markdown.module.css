@@ -56,16 +56,6 @@
   @apply bg-[#1e1e2e] rounded-lg p-4 mb-4 overflow-x-auto relative;
 }
 
-.markdown pre:hover .toolbar {
-  opacity: 1;
-}
-
-.toolbar {
-  @apply absolute top-2 right-2 flex items-center space-x-2 bg-gray-800/90 
-    rounded-lg px-2 py-1 backdrop-blur-sm transition-opacity duration-200;
-  opacity: 0;
-}
-
 .markdown code {
   @apply bg-[#1e1e2e] px-1.5 py-0.5 rounded text-sm font-mono;
 }
@@ -107,110 +97,44 @@
   @apply px-2 py-1 text-xs font-semibold text-gray-800 bg-gray-100 border border-gray-400 rounded-lg;
 }
 
-/* GitHub-style task lists */
-.markdown input[type="checkbox"] {
+.markdown :global(input[type="checkbox"]) {
   @apply mr-2;
 }
 
-/* GitHub-style syntax highlighting theme adjustments */
-.markdown .hljs {
+.markdown :global(.hljs) {
   @apply bg-transparent text-gray-200;
 }
 
-/* GitHub-style alerts */
-.markdown .alert {
+.markdown :global(.alert) {
   @apply p-4 mb-4 rounded-lg border;
 }
 
-.markdown .alert-info {
+.markdown :global(.alert-info) {
   @apply bg-blue-900/20 border-blue-700 text-blue-100;
 }
 
-.markdown .alert-warning {
+.markdown :global(.alert-warning) {
   @apply bg-yellow-900/20 border-yellow-700 text-yellow-100;
 }
 
-.markdown .alert-danger {
+.markdown :global(.alert-danger) {
   @apply bg-red-900/20 border-red-700 text-red-100;
 }
 
-/* Add to your existing styles */
-.markdown pre span {
-  transition: background-color 0.2s ease;
-}
-
-/* Style for highlighted text selection */
-.markdown pre ::selection {
-  background-color: rgba(255, 255, 255, 0.2);
-}
-
-/* Add a subtle hover effect to lines */
-.markdown pre span:hover {
-  background-color: rgba(255, 255, 255, 0.05);
-}
-
-/* Style for the line numbers column */
-.markdown pre span[style*="display: inline-block"] {
-  user-select: none;
-  cursor: pointer;
-  min-width: 3em;
-  padding-right: 1em;
-  text-align: right;
-  color: rgba(255, 255, 255, 0.3);
-  border-right: 1px solid rgba(255, 255, 255, 0.1);
-  margin-right: 1em;
-}
-
-/* Style for the code container */
-.markdown pre {
-  @apply bg-[#1e1e2e] rounded-lg p-4 mb-4 overflow-x-auto relative;
-}
-
-/* Hover effect for the toolbar */
-.markdown pre:hover .toolbar {
-  opacity: 1;
-}
-
-/* Style for the toolbar */
-.toolbar {
-  @apply absolute top-2 right-2 flex items-center space-x-2 bg-gray-800/90 
-    rounded-lg px-2 py-1 backdrop-blur-sm transition-opacity duration-200;
-  opacity: 0;
-}
-
-/* Style for highlighted lines */
-.highlighted-line {
-  @apply bg-white/10 -mx-4 px-4;
-}
-
-/* Style for the branch selector */
-.branch-selector {
-  @apply relative inline-block;
-}
-
-/* Style for the font size indicator */
-.font-size-indicator {
-  @apply text-xs text-gray-400 ml-2;
-}
-
-/* Improve button hover states */
-.toolbar button:hover {
-  @apply bg-white/10;
-}
-
-/* Code block specific code */
-.markdown pre code {
-  @apply bg-transparent p-0 text-gray-200;
-}
-
-/* Code wrapper styling */
-.markdown .code-wrapper {
+.codeWrapper {
   @apply bg-[#1e1e2e] rounded-lg relative;
 }
 
-/* Copy button styling */
-.markdown .copy-button {
+.copyButton {
   @apply absolute top-2 right-2 p-2 bg-gray-800 text-gray-300 rounded-lg 
     opacity-0 group-hover:opacity-100 transition-opacity duration-200 
     hover:bg-gray-700;
+}
+
+.customVideoPlayer {
+  @apply my-8;
+}
+
+.customImageViewer {
+  @apply my-8;
 }

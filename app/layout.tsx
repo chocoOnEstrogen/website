@@ -3,6 +3,7 @@ import './globals.css'
 import { config } from '@/configs/main'
 import { Next13NProgress } from 'nextjs13-progress'
 import { Oneko } from '@/components/oneko'
+import '@/app/styles/markdown-globals.css'
 
 export const metadata: Metadata = {
 	title: config.name,

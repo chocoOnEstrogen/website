@@ -129,3 +129,7 @@ body {
 .folder-list > * {
   margin-bottom: 0.5rem;  /* Adds 8px spacing between folder items */
 }
+
+html {
+  scroll-behavior: smooth;
+}
