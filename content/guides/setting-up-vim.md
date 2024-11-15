@@ -1,7 +1,7 @@
 ---
 title: How to Setup Vim for Better Development on Arch Linux
 description: A step-by-step guide to transforming Vim into a powerful and modern text editor with plugins, themes, and essential configurations for Arch Linux users.
-category: Linux,Arch,Development
+category: Linux
 date: 2024-11-16
 featured: true
 order: 1
