@@ -14,6 +14,7 @@ import {
 	SiNuxtdotjs,
 	SiVim,
 	SiGooglecloud,
+	SiGitlab,
 } from '@icons-pack/react-simple-icons'
 import { GitBranch, Heart } from 'lucide-react'
 
@@ -32,6 +33,7 @@ export const iconMap = {
 	SiNuxtdotjs,
 	SiVim,
 	SiGooglecloud,
+	SiGitlab,
 	// Lucide Icons
 	GitBranch,
 	Heart,

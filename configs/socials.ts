@@ -12,5 +12,17 @@ export const socials: ISocials[] = [
 		url: 'https://github.com/chocoOnEstrogen',
 		iconName: 'SiGithub',
 		color: '#FFFFFF',
-	}
+	},
+	{
+		name: 'Discord',
+		url: 'https://discord.com/users/1248626823638552701',
+		iconName: 'SiDiscord',
+		color: '#5865F2',
+	},
+	{
+		name: 'GitLab',
+		url: 'https://gitlab.com/puppydev',
+		iconName: 'SiGitlab',
+		color: '#FCA126',
+	},
 ]
