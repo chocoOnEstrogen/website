@@ -25,6 +25,7 @@ export default function AskComponent({ turnstileSiteKey }: AskComponentProps) {
     const [success, setSuccess] = useState(false)
     const [cooldownRemaining, setCooldownRemaining] = useState<number>(0)
     const [turnstileToken, setTurnstileToken] = useState<string>('')
+    const [ipAddress, setIpAddress] = useState<string>('')
 
     useEffect(() => {
         // Check cooldown on component mount
@@ -48,6 +49,14 @@ export default function AskComponent({ turnstileSiteKey }: AskComponentProps) {
                 localStorage.removeItem(COOLDOWN_KEY)
             }
         }
+    }, [])
+
+    useEffect(() => {
+        // Fetch IP address when component mounts
+        fetch('/api/ip')
+            .then(res => res.json())
+            .then(data => setIpAddress(data.ip))
+            .catch(console.error)
     }, [])
 
     const formatTime = (seconds: number): string => {
@@ -88,6 +97,7 @@ export default function AskComponent({ turnstileSiteKey }: AskComponentProps) {
                 body: JSON.stringify({
                     text: question,
                     turnstileToken,
+                    ipAddress,
                 }),
             })
 
