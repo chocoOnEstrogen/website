@@ -8,18 +8,23 @@ import { Button } from '@/components/ui/button'
 import { Callout } from '@/components/ui/callout'
 import { motion } from 'framer-motion'
 import { config } from '@/configs/main'
+import { Turnstile } from '@marsidev/react-turnstile'
+
+interface AskComponentProps {
+    turnstileSiteKey: string;
+}
 
 const COOLDOWN_MINUTES = 5
 const COOLDOWN_KEY = 'ask_cooldown'
+const CHAR_LIMIT = 100
 
-export default function AskComponent() {
+export default function AskComponent({ turnstileSiteKey }: AskComponentProps) {
     const [question, setQuestion] = useState('')
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState<string | null>(null)
     const [success, setSuccess] = useState(false)
     const [cooldownRemaining, setCooldownRemaining] = useState<number>(0)
-
-    const LIMIT = 100
+    const [turnstileToken, setTurnstileToken] = useState<string>('')
 
     useEffect(() => {
         // Check cooldown on component mount
@@ -56,6 +61,11 @@ export default function AskComponent() {
         setError(null)
         setSuccess(false)
         
+        if (!turnstileToken) {
+            setError('Please complete the CAPTCHA verification')
+            return
+        }
+
         // Check cooldown
         if (cooldownRemaining > 0) {
             setError(`Please wait ${formatTime(cooldownRemaining)} before asking another question`)
@@ -63,8 +73,8 @@ export default function AskComponent() {
         }
 
         // Validate question length
-        if (question.length > LIMIT) {
-            setError(`Question must be less than ${LIMIT} characters`)
+        if (question.length > CHAR_LIMIT) {
+            setError(`Question must be less than ${CHAR_LIMIT} characters`)
             return
         }
 
@@ -77,11 +87,13 @@ export default function AskComponent() {
                 },
                 body: JSON.stringify({
                     text: question,
+                    turnstileToken,
                 }),
             })
 
+            const data = await response.json()
+            
             if (!response.ok) {
-                const data = await response.json()
                 throw new Error(data.error || 'Failed to submit question')
             }
 
@@ -93,10 +105,15 @@ export default function AskComponent() {
             setSuccess(true)
             setQuestion('')
         } catch (err) {
+            console.error('Submit error:', err)
             setError(err instanceof Error ? err.message : 'Failed to submit question')
         } finally {
             setLoading(false)
         }
+    }
+
+    const handleTurnstileSuccess = (token: string) => {
+        setTurnstileToken(token)
     }
 
     return (
@@ -151,20 +168,28 @@ export default function AskComponent() {
                                     value={question}
                                     onChange={(e) => setQuestion(e.target.value)}
                                     className="resize-none bg-gray-800/50 border-gray-700 text-gray-200 placeholder:text-gray-500 focus-visible:ring-purple-400"
-                                    maxLength={LIMIT}
+                                    maxLength={CHAR_LIMIT}
                                     disabled={cooldownRemaining > 0}
                                 />
                                 <div className="absolute bottom-2 right-2 text-sm text-gray-400">
-                                    {question.length}/{LIMIT}
+                                    {question.length}/{CHAR_LIMIT}
                                 </div>
                             </div>
                         </div>
+                        <Turnstile
+                            siteKey={turnstileSiteKey}
+                            onSuccess={handleTurnstileSuccess}
+                        />
+                       
                         <Button 
                             type="submit" 
                             className="w-full bg-purple-600 hover:bg-purple-700 text-white transition-colors"
-                            disabled={loading || !question.trim() || cooldownRemaining > 0}
+                            disabled={loading || !question.trim() || cooldownRemaining > 0 || !turnstileToken}
                         >
-                            {loading ? 'Submitting...' : cooldownRemaining > 0 ? `Wait ${formatTime(cooldownRemaining)}` : 'Submit Question'}
+                            {loading ? 'Submitting...' : 
+                             cooldownRemaining > 0 ? `Wait ${formatTime(cooldownRemaining)}` : 
+                             !turnstileToken ? 'Complete CAPTCHA' : 
+                             'Submit Question'}
                         </Button>
                     </form>
                 </CardContent>
